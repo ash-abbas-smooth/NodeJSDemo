@@ -20,25 +20,38 @@ routes.get('/author',function(req,res){
 routes.post('/author', (req, res) =>
 {
   var author = req.body;
-  authorDao.addAuthor(author, (err, res) =>
+  console.log(author);
+  authorDao.addAuthor(author, (err, result) =>
   {
     if(err)
     {
       res.status(400);
       res.send('Add Author Failed!');
     }
-    res.status(201);
-    res.send('Add Author Succesful!');
+    else{
+      res.status(201);
+      res.send('Add Author Succesful!');
+    }
   });
 });
 
 routes.put('/author', (req, res) =>
 {
   var author = req.body;
-  authorDao.updateAuthor(author, (err,res) =>
+  authorDao.updateAuthor(author, (err,result) =>
   {
     if(err) { res.status(400); res.send('Update Author Failed!');}
-    res.status(201); res.send('Update Author Successful!');
+    else{res.status(201); res.send('Update Author Successful!');}
+  });
+});
+
+routes.delete('/author:id', (req, res) =>
+{
+  var author = req.body;
+  authorDao.removeAuthor(author, (err, result) =>
+  {
+    if(err) { res.status(400); res.send('Delete author failed!');}
+    else{res.send("Delete successful!");}
   });
 });
 

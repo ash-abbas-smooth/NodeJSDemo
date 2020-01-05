@@ -1,7 +1,7 @@
 var routes = require('express').Router(); //bean
 var db = require('../dao/db');  
 var bookDao = require('../dao/bookDAO');
-
+var promise = require('promise');
 /*
 *   TODO: 
 */
@@ -36,7 +36,6 @@ routes.post('/book', function(req, res){
       res.status(400);
       res.status("Add book Failed!");
   });
-
 });
 
 routes.put('/book', function(req, res)

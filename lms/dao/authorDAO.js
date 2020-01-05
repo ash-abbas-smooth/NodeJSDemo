@@ -21,12 +21,11 @@ exports.addAuthor = function(author, cb)
     db.beginTransaction(function(err) 
     {
       if(err) cb(err,null);
-      
-      db.query('insert into tbl_author (name) value (?)', [author.name], function(err,res)
+      console.log(author.name);
+      db.query('insert into tbl_author (authorName) value (?)', [author.name], function(err,res)
       {
           if(err)
               db.rollback( (err,res) => cb(err,res));
-          
           db.commit((err,res)=> cb(err,res));
       });
     });
