@@ -2,6 +2,7 @@ var routes = require('express').Router(); //bean
 var db = require('../dao/db');  
 var bookDao = require('../dao/bookDAO');
 var promise = require('promise');
+
 /*
 *   TODO: 
 */
@@ -56,7 +57,7 @@ routes.put('/book', function(req, res)
 });
 
 routes.delete('/book/:id', function(req, res){
-  var book = req.body;
+  var book = req.body.id;
   bookDao.deleteBook(book)
   .then( (result) => 
   {
